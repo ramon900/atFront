@@ -52,5 +52,18 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('CachorrosCtrl', function($scope) {
+  $scope.animais =[
+    {
+      "id":"1",
+      "nome":"Thor",
+      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
+      "contato":"23456789",
+      "imagem":"http://lorempixel.com/300/150/animals/55"
+    }];
+})
+.controller('GatosCtrl', function($scope) {
+  $scope.animais=[];
+})
+.controller('PerfilCtrl', function($scope) {
 });
