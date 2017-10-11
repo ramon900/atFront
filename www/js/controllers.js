@@ -31,21 +31,19 @@ angular.module('starter.controllers', [])
   };
 
   
-  $scope.doLogin = function() {
+$scope.doLogin = function() {
     Auth.verificaLogin($scope.loginData).then(ret => {
-    
-    console.log('Doing login', $scope.loginData);
-    $rootScope.estaLogado= true;
-    Auth.savaLocalStorage("user", JSON.stringify(ret.data));
-    Auth.savaLocalStorage(("token", ret.data.token));
-    console.log("usuario logado");
+      console.log('voltei com :');
+      console.log(ret);
+      $rootScope.estaLogado = true;
+      Auth.savaLocalStorage("user",JSON.stringify(ret.data));
     });
+    console.log('Doing login', $scope.loginData);
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
   };
 })
-
 .controller('CachorrosCtrl', function($scope) {
   $scope.animais =[
     {
@@ -78,30 +76,23 @@ angular.module('starter.controllers', [])
     }
     ];
 })
+
+.controller('CachorroCtrl', function($scope, AnimAPI, $state, $stateParams) {
+
+  console.log($stateParams);
+  var idAnimal = $stateParams.id;
+  AnimAPI.query({id: idAnimal}, function(anim){
+    console.log(anim.data);
+    $scope.animal = anim.data;
+    $scope.titulo = anim.data.nome;
+  })
+
+})
+
+
+
 .controller('GatosCtrl', function($scope, AnimAPI) {
-  $scope.animais=[
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    },
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    },
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    }
-    ]
+  
   $scope.titulo = "Busca por Gatos";
   
   AnimAPI.query(function(anim){

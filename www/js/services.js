@@ -24,7 +24,7 @@ angular.module('starter.services',['ngResource'])
                  function(error){
                      console.log('ERR');
                      console.log(error);
-                     return error.data;
+                     return response.error;
                      
                  });
              },
@@ -44,7 +44,7 @@ angular.module('starter.services',['ngResource'])
     })
     .factory('AnimAPI', function($resource, configs, Auth){
         var campoToken={
-            'Authorizarion': 'Bearer' + Auth.pegaToken()
+            'Authorization': 'Bearer' + Auth.pegaToken()
         };
         
         return $resource(configs.enderecoapi + 'animals/:id', {id: '@_id'},

@@ -1,0 +1,29 @@
+<ion-view view-title="cadastrar um adotado">
+  <ion-content>
+    <div class="list">
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Nome</span>
+    <input type="text" placeholder="Nome do Animal" ng-model="animal.nome">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Tipo</span>
+    <input type="text" placeholder="Tipo" ng-model="animal.tipo">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Descrição</span>
+    <input type="text" placeholder="Fale sobre ele"  ng-model="animal.descricao">
+  </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Contato</span>
+        <input type="text" placeholder="Como poderão te contatar"  ng-model="animal.contato">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Link de foto</span>
+        <input type="text" placeholder="Coloque o link de uma foto do animal" ng-model="animal.foto">
+      </label>
+      <button class="button button-stable" ng-click="cadastra()">
+        Salvar     
+      </button>
+</div>
+  </ion-content>
+</ion-view>

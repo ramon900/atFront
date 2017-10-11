@@ -26,38 +26,56 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $stateProvider
 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
   })
 
   .state('app.cachorros', {
-    url          : '/cachorros',
-    views        : {
-    'menuContent': {
-    templateUrl  : 'templates/listaanimais.html',
-    controller   :'CachorrosCtrl'
+    url: '/cachorros',
+    cache        :'false',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/listaanimais.html',
+        controller: 'CachorrosCtrl'
       }
     }
   })
-  
-   .state('app.cachorro', {
-    url          : '/cachorro/:id',
-    views        : {
-    'menuContent': {
-    templateUrl  : 'templates/animal.html',
-    controller   :'CachorroCtrl'
+.state('app.cachorro', {
+      url          : '/cachorro/:id',
+      views        : {
+      'menuContent': {
+      templateUrl  : 'templates/animal.html',
+      controller   : 'CachorroCtrl'
+        }
       }
-    }
-  })
-
+    })
   .state('app.gatos', {
       url          : '/gatos',
+      cache        :'false',
       views        : {
       'menuContent': {
       templateUrl  : 'templates/listaanimais.html',
       controller   : 'GatosCtrl'
+        }
+      }
+    })
+    .state('app.gato', {
+      url          : '/gato/:id',
+      views        : {
+        'menuContent': {
+          templateUrl  : 'templates/animal.html',
+          controller   : 'GatoCtrl'
+        }
+      }
+    })
+    .state('app.cadastroanimal', {
+      url          : '/cadastroanimal',
+      views        : {
+        'menuContent': {
+          templateUrl  : 'templates/cadastroanimal.html',
+          controller   : 'CadastroAnimalCtrl'
         }
       }
     })
@@ -69,7 +87,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           controller: 'PerfilCtrl'
         }
       }
-    });
+
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/gatos');
