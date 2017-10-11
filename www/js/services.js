@@ -1,4 +1,4 @@
-angular.module('starter.services',[])
+angular.module('starter.services',['ngResource'])
 .constant("configs",{
     "enderecoapi": "http://138.197.191.31:3000/v1/"
 })
