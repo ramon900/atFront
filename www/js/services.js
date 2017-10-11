@@ -30,6 +30,37 @@ angular.module('starter.services',[])
              },
              savaLocalStorage: function(nome, valor){
                  localStorage.setItem(nome, valor);
+             },
+             pegaToken: function(){
+                 var token = '';
+                 var temp = localStorage.getItem("user");
+                 console.log(temp);
+                 if(temp){
+                     token = JSON.parse(temp).token
+                 }
+                 return token;
              }
         }
-    });
+    })
+    .factory('AnimAPI', function($resource, configs, Auth){
+        var campoToken={
+            'Authorizarion': 'Bearer' + Auth.pegaToken()
+        };
+        
+        return $resource(configs.enderecoapi + 'animals/:id', {id: '@_id'},
+        {
+            update :{
+            method : 'PUT',
+            headers: campoToken
+            },
+            save   :{
+            method :'POST',
+            headers:campoToken
+            },
+            
+            query  :{ headers:campoToken },
+            remove: { headers:campoToken },
+            delete: { headers:campoToken },
+            get: { headers:campoToken },
+        });
+    })
