@@ -34,7 +34,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   .state('app.cachorros', {
     url: '/cachorros',
-    cache        :'false',
     views: {
       'menuContent': {
         templateUrl: 'templates/listaanimais.html',
@@ -76,6 +75,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         'menuContent': {
           templateUrl  : 'templates/cadastroanimal.html',
           controller   : 'CadastroAnimalCtrl'
+        }
+      }
+    })
+    .state('app.cadastrousuario', {
+      url          : '/cadastrousuario',
+      views        : {
+        'menuContent': {
+          templateUrl  : 'templates/cadastrousuario.html',
+          controller   : 'CadastroUsuarioCtrl'
         }
       }
     })

@@ -1,0 +1,22 @@
+<ion-view view-title="cadastrar um usuario">
+  <ion-content>
+    <div class="list">
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Usuario</span>
+    <input type="text" placeholder="usuario" ng-model="usuario.username">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Email</span>
+    <input type="Email" placeholder="Email" ng-model="usuario.email">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Senha</span>
+    <input type="Password" placeholder="Senha"  ng-model="usuario.password">
+  </label>
+      
+      <button class="button button-stable" ng-click="SingUp()">
+        Cadastrar     
+      </button>
+</div>
+  </ion-content>
+</ion-view>

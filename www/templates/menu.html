@@ -21,6 +21,10 @@
         <ion-item menu-close ng-click="login()" ng-if="!estaLogado">
           Login
         </ion-item>
+         <ion-list>
+        <ion-item menu-close href="#/app/cadastrousuario" ng-if="!estaLogado">
+          Cadastro
+        </ion-item>
         <ion-item menu-close ng-if="estaLogado" href="#/app/perfil">
           Perfil
         </ion-item>

@@ -29,7 +29,6 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
-
   
 $scope.doLogin = function() {
     Auth.verificaLogin($scope.loginData).then(ret => {
@@ -44,39 +43,16 @@ $scope.doLogin = function() {
     }, 1000);
   };
 })
-.controller('CachorrosCtrl', function($scope) {
-  $scope.animais =[
-    {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    },
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    },
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    },
-     {
-      "id":"1",
-      "nome":"Thor",
-      "descricao":"Pensando mais a longo prazo, o inicio da atividade geral da formação",
-      "contato":"23456789",
-      "imagem":"http://lorempixel.com/300/150/animals/55"
-    }
-    ];
-})
+.controller('CachorrosCtrl', function($scope, AnimAPI) {
+  $scope.titulo="Busca por cachorros";
+  $scope.filtro="Cachorro"
 
+  AnimAPI.query(function(anim){
+    console.log(anim.data);
+    $scope.animais = anim.data;
+  });
+
+})
 .controller('CachorroCtrl', function($scope, AnimAPI, $state, $stateParams) {
 
   console.log($stateParams);
@@ -94,6 +70,7 @@ $scope.doLogin = function() {
 .controller('GatosCtrl', function($scope, AnimAPI) {
   
   $scope.titulo = "Busca por Gatos";
+  $scope.filtro="Gato"
   
   AnimAPI.query(function(anim){
     console.log(anim.data);
@@ -123,5 +100,15 @@ $scope.doLogin = function() {
       console.log(x);
     })
   }
+})
+
+.controller('CadastroUsuarioCtrl', function($scope, UsuAPI){
+  $scope.usuario = new UsuAPI();
+  $scope.SingUp = function(){
+    UsuAPI.save($scope.usuario, function(x){
+      console.log(x);
+    })
+  }
 });
+
 
